@@ -1,0 +1,4 @@
+<button (click)="gitStorageService.clone(repository? repository.ssh_url : userRepo?.ssh_url)">clone {{repository? repository.ssh_url : userRepo?.ssh_url}}</button>
+<div #clonedSuccess [class.success]="repository">...</div>
+
+<button (click)="gitService.getStatus()">status</button>

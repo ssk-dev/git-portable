@@ -1,0 +1,23 @@
+<h1>Repositories</h1>
+<select (change)="gitService.repository = jsonParse($event.target.value)">
+  <ng-template [ngForOf]="repositories" let-i="index" let-repository ngFor>
+    <option [value]="repository | json">{{repository.name}}</option>
+  </ng-template>
+</select>
+
+<button (click)="openDir()">open dir</button>
+<git-clone></git-clone>
+
+<div (click)="show = !show">
+  <h2>Repository Data</h2>
+  <pre [hidden]="!show">
+    <code>
+      {{repository | json}}
+    </code>
+  </pre>
+</div>
+
+<h1>Branches</h1>
+<git-branches></git-branches>
+<h1>Branch</h1>
+<git-branch></git-branch>

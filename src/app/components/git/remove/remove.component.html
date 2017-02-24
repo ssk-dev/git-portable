@@ -1,0 +1,2 @@
+<button (click)="gitStorageService.remove(repository? repository.name : userRepo?.name)">remove {{repository? repository.ssh_url : userRepo?.ssh_url}}</button>
+<div #removedSuccess [class.success]="repository">...</div>

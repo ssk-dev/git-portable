@@ -1,0 +1,20 @@
+<!--gitService.getBranch(jsonParse($event.target.value).name); selectedLocalBranch =''-->
+<select (change)="setBranch($event)">
+
+  <optgroup *ngIf="activeBranch" label="--local">
+    <ng-template [ngForOf]="localBranches" let-branch let-i="index" ngFor>
+      <option [value]="branch | json" class="local" [selected]="branch?.name === activeBranch?.name">{{branch?.name |isEqualString:activeBranch?.name}}</option>
+    </ng-template>
+  </optgroup>
+
+  <optgroup *ngIf="branches" label="--origin">
+    <ng-template [ngForOf]="branches" let-branch let-i="index" ngFor>
+      <option [value]="branch | json" class="origin">{{branch?.name}}</option>
+    </ng-template>
+  </optgroup>
+
+</select>
+{{activeBranch?.name}} {{currentBranch?.name}}
+<!--<select (change)="gitService.branch = $event.target.value; selectedLocalBranch = $event.target.value">-->
+
+<!--</select>-->

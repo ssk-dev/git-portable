@@ -1,0 +1,40 @@
+<p>Current checked out Branch: <strong>{{activeBranch?.name}}</strong></p>
+
+<git-status *ngIf="activeBranch"></git-status>
+
+<div>
+  <label for="createBranch">create branch</label>
+  <input #branchName id="createBranch" type="text">
+  <button (click)="gitService.checkout({name: branchName.value, source: sourceEnum.local}, true, true)">create</button>
+</div>
+
+<div *ngIf="currentBranch">
+  Checkout {{currentBranch.source}} branch: {{currentBranch.name}}
+  <button (click)="gitService.checkout(currentBranch, false, false)">checkout</button>
+  <button (click)="gitService.removeBranch(currentBranch)"
+          [disabled]="activeBranch?.name === currentBranch?.name && activeBranch?.source === currentBranch?.source">remove
+  </button>
+</div>
+active:<strong>{{activeBranch?.source}}</strong>  {{activeBranch?.name}} <br>
+selected: <strong>{{currentBranch?.source}}</strong> {{currentBranch?.name}}
+<div *ngIf="activeBranch?.name === currentBranch?.name && activeBranch?.source === currentBranch?.source">same</div>
+<div>
+  <button (click)="gitService.getStatus()">update Status</button>
+</div>
+<div>
+  <button (click)="gitService.pull()">pull</button>
+</div>
+<!--<div>-->
+<!--  Checkout Local Branch: {{selectedLocalBranch}}-->
+<!--  <button (click)="gitService.checkoutLocalBranch(selectedLocalBranch, false, false)">checkout</button>-->
+<!--  <button (click)="gitService.removeBranch(selectedLocalBranch, false)">remove</button>-->
+<!--</div>-->
+
+<div (click)="show = !show">
+  <h2>Branch Data</h2>
+  <pre>
+    <code>
+       {{branch | json}}
+    </code>
+  </pre>
+</div>

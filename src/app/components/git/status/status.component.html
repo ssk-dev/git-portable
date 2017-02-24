@@ -1,0 +1,9 @@
+<div *ngIf="status">
+  <h2>Status</h2>
+  <pre>
+<code>
+{{status | json}}
+</code>
+</pre>
+  <button (click)="gitService.openTerminal()">open Terminal</button>
+</div>

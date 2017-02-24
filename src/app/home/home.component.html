@@ -1,0 +1,13 @@
+<div *ngIf="authService.user">
+  <button (click)="createDir()">create dir</button>
+
+  <git-remove></git-remove>
+  <button (click)="gitStorageService.ssh()">ssh</button>
+  <!--<pre>-->
+  <!--  <code>-->
+  <!--    {{authService.loggedInUser|json}}-->
+  <!--  </code>-->
+  <!--</pre>-->
+  <git-repository></git-repository>
+</div>
+
